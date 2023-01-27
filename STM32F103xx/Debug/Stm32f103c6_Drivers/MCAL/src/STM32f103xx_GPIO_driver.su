@@ -1,0 +1,9 @@
+STM32f103xx_GPIO_driver.c:15:16:Get_CRLH_Position	16	static
+STM32f103xx_GPIO_driver.c:84:6:GPIO_enuPeriClockControl	24	static
+STM32f103xx_GPIO_driver.c:167:6:GPIO_enuInit	40	static
+STM32f103xx_GPIO_driver.c:238:6:GPIO_enuDeInit	24	static
+STM32f103xx_GPIO_driver.c:282:6:GPIO_enuReadFromInputPin	32	static
+STM32f103xx_GPIO_driver.c:310:6:GPIO_enuWriteToOutputPin	24	static
+STM32f103xx_GPIO_driver.c:353:6:GPIO_enuReadFromInputPort	24	static
+STM32f103xx_GPIO_driver.c:377:6:GPIO_enuWriteToOutputPort	24	static
+STM32f103xx_GPIO_driver.c:402:6:GPIO_enuToggleOutputPin	24	static

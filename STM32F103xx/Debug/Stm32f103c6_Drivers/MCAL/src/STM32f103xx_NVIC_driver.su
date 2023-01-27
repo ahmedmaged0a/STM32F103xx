@@ -1,0 +1,6 @@
+STM32f103xx_NVIC_driver.c:15:6:MNVIC_enuEnableInterrupt	24	static
+STM32f103xx_NVIC_driver.c:37:6:MNVIC_enuDisableInterrupt	24	static
+STM32f103xx_NVIC_driver.c:60:6:MNVIC_enuSetPending	24	static
+STM32f103xx_NVIC_driver.c:82:6:MNVIC_enuClearPending	24	static
+STM32f103xx_NVIC_driver.c:105:9:MNVIC_enuGetActive	16	static
+STM32f103xx_NVIC_driver.c:118:6:NVIC_enuSetPriority	24	static
