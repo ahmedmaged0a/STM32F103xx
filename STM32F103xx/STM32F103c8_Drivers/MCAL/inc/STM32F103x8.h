@@ -91,7 +91,7 @@ typedef struct
 //-----------------------------
 
 #define RCC_BASE			(AHB_PREPHERALS_BASE+0x9000U)
-
+#define DMA1_BASE			(PERIPHRALS_BASE+0x20000U)
 //-----------------------------
 //Base addresses for APB2 Peripherals
 //-----------------------------
@@ -155,7 +155,7 @@ typedef struct
 	__vo uint32_t	EXTICR2;									// Address offset = 0x0C
 	__vo uint32_t	EXTICR3;									// Address offset = 0x10
 	__vo uint32_t	EXTICR4;									// Address offset = 0x14
-	     uint32_t	RESERVED_1;									// Address offset = 0x18
+	uint32_t	RESERVED_1;									// Address offset = 0x18
 	__vo uint32_t	MAPR2;										// Address offset = 0x1C
 
 }AFIO_RegDef_t;
@@ -173,7 +173,24 @@ typedef struct
 }EXTI_RegDef_t;
 
 
-
+//-------GPIO_REG-------
+/*
+ * Note Address offset = (DMA_BASE+OFFSIT)+ 0x14 × (channel number – 1)
+ * */
+typedef struct
+{
+	__vo uint32_t  CCRx ;      					                // Address offset = 0x00
+	__vo uint32_t  CNDTRx;									    // Address offset = 0x04
+	__vo uint32_t  CPARx;									    // Address offset = 0x08
+	__vo uint32_t  CMARx;									    // Address offset = 0x0C
+	__vo uint32_t  Reserved;									    // Address offset = 0x10
+}DMA1_Channel;
+typedef struct
+{
+	__vo uint32_t  ISR ;      					                // Address offset = 0x08
+	__vo uint32_t  IFCR;									    // Address offset = 0x0C
+	DMA1_Channel  CHANNEL[7];									// Address offset = 0x10
+}DMA1_RegDef_t;
 //============================================================================================
 
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -192,7 +209,8 @@ typedef struct
 #define EXTI				((EXTI_RegDef_t *)EXTI_BASE)
 //-------AFIO-------
 #define AFIO				((AFIO_RegDef_t *)AFIO_BASE)
-
+//-------AFIO-------
+#define DMA				     ((DMA1_RegDef_t *)DMA1_BASE)
 //============================================================================================
 
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -209,7 +227,8 @@ typedef struct
 //-------AFIO-------
 #define AFIO_PERI_CLOCK_ENABLE()		(RCC->APB2ENR |=(1<<0))
 
-
+//------DMA---------
+#define DMA_PERI_CLOCK_ENABLE()			(RCC->AHBENR |= (1<<0))
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 //macros to reset GPIOx Peripherals:
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -235,6 +254,8 @@ typedef struct
 //-------AFIO-------
 #define AFIO_PERI_CLOCK_DISABLE()		(RCC->APB2ENR &=~0)
 
+//------DMA---------
+#define DMA_PERI_CLOCK_DISABLE()		(RCC->AHBENR &=~ (1<<0))
 
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 //Error States:
@@ -243,7 +264,8 @@ typedef enum
 {
 	ES_NOK,
 	ES_OK,
-	ES_NULL_POINTER
+	ES_NULL_POINTER,
+	ES_OUTOFRANGE
 }ES_t;
 
 typedef enum
@@ -257,10 +279,10 @@ typedef enum
  * Returns PORTx Code for given GPIOx base Address
  * */
 #define EXTI_GPIOx_TO_CODE(x)	((x==GPIOA)?0:\
-								 (x==GPIOB)?1:\
-								 (x==GPIOC)?2:\
-								 (x==GPIOD)?3:\
-								 (x==GPIOE)?4:0)
+		(x==GPIOB)?1:\
+				(x==GPIOC)?2:\
+						(x==GPIOD)?3:\
+								(x==GPIOE)?4:0)
 
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 //Generic[Private] Macros:
@@ -284,5 +306,17 @@ typedef enum
 #define RESET 	 	 		 DISABLE
 #define GPIO_PIN_SET		 SET
 #define GPIO_PIN_RESET 		 RESET
+
+#define  DMA_GIF    0
+#define  DMA_TCIF   1
+#define  DMA_HTIF   2
+#define  DMA_TEIF   3
+
+#define  DMA_TCIE   1
+#define  DMA_HTIE   2
+#define  DMA_TEIE   3
+
+#define DMA1_ENABLE  0
+#define DMA1_DISABLE 1
 
 #endif /* INCLUDE_STM32F103X6_H_ */

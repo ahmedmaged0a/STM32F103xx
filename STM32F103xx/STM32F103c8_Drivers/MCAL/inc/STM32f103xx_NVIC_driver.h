@@ -46,8 +46,8 @@ ES_t NVIC_enuSetPriority  (uint8_t Copy_u8InterruptID , uint8_t Copy_u8Interrupt
 #define 	Interrupt_EXTI1                 7
 #define 	Interrupt_EXTI2                 8
 #define 	Interrupt_EXTI3                 9
-#define 	Interrupt_EXTI4              	  10
-#define 	Interrupt_DMA1_Channel1      	  11
+#define 	Interrupt_EXTI4              	10
+#define 	Interrupt_DMA1_Channel1      	11
 #define 	Interrupt_DMA1_Channel2         12
 #define 	Interrupt_DMA1_Channel3         13
 #define 	Interrupt_DMA1_Channel4         14

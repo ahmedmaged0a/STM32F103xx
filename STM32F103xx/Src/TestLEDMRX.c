@@ -3,7 +3,7 @@
 /*	Date		:	15 OCT 2022												   */
 /*	Version		:	V01									    				   */
 /*******************************************************************************/
-#include "../STM32F103c8_Drivers/HAL/inc/LED_MAX.h"
+/*#include "../STM32F103c8_Drivers/HAL/inc/LED_MAX.h"
 #include "../STM32F103c8_Drivers/MCAL/inc/STM32f103xx_GPIO_driver.h"
 #include "../STM32F103c8_Drivers/MCAL/inc/STM32f103xx_RCC_driver.h"
 #include "../STM32F103c8_Drivers/MCAL/inc/STM32f103xx_SysTick_driver.h"
@@ -32,5 +32,5 @@ int main(void)
 	HLED_MRX_voidDisplay(&LED_MRX_Config, Data_Array);
 
 	return 0;
-}
+}*/
 

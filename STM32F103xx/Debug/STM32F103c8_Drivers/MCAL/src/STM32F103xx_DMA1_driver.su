@@ -1,0 +1,7 @@
+STM32F103xx_DMA1_driver.c:12:6:DMA_enuConfigurationSetup	24	static
+STM32F103xx_DMA1_driver.c:127:6:DMA_enuEnable	24	static
+STM32F103xx_DMA1_driver.c:148:6:DMA_enuDisable	24	static
+STM32F103xx_DMA1_driver.c:164:6:DMA_enuInterruptEnable	24	static
+STM32F103xx_DMA1_driver.c:180:6:DMA_enuSetAddress	32	static
+STM32F103xx_DMA1_driver.c:197:13:DMA_SvidClearFlag	16	static
+STM32F103xx_DMA1_driver.c:202:6:DMA_enuReadFlag	24	static

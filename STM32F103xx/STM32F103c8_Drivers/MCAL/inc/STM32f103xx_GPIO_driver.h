@@ -112,8 +112,7 @@ typedef struct
 #define GPIO_SPEED_50M					0x00000003U 	// Select Output mode, max speed 50 MHz
 
 
-/*@ref Module_REF_NAME_define
-*/
+
 /*
 * ==============================================================================================
 * 								APIs Supported by "MCAL GPIO DRIVER"
