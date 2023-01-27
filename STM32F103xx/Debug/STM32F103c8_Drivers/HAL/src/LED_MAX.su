@@ -1,0 +1,4 @@
+LED_MAX.c:26:6:HLED_MRX_voidInit	32	static
+LED_MAX.c:67:6:HLED_MRX_voidDisplay	24	static
+LED_MAX.c:93:13:SetRowsValues	24	static
+LED_MAX.c:110:13:DisableAllColumns	24	static

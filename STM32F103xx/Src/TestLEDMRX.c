@@ -3,10 +3,10 @@
 /*	Date		:	15 OCT 2022												   */
 /*	Version		:	V01									    				   */
 /*******************************************************************************/
-#include "LED_MAX.h"
-#include "STM32f103xx_RCC_driver.h"
-#include "STM32f103xx_GPIO_driver.h"
-#include "STM32f103xx_SysTick_driver.h"
+#include "../STM32F103c8_Drivers/HAL/inc/LED_MAX.h"
+#include "../STM32F103c8_Drivers/MCAL/inc/STM32f103xx_GPIO_driver.h"
+#include "../STM32F103c8_Drivers/MCAL/inc/STM32f103xx_RCC_driver.h"
+#include "../STM32F103c8_Drivers/MCAL/inc/STM32f103xx_SysTick_driver.h"
 uint8_t Data_Array[8] = {0,124,18,18,18,124,0,0};
 
 int main(void)

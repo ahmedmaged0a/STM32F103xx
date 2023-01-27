@@ -1,0 +1,2 @@
+STP_74HC595.c:16:6:STP_enuInit	32	static
+STP_74HC595.c:52:6:STP_enuSendSynchronus	24	static
