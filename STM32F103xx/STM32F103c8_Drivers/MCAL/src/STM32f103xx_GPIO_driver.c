@@ -274,7 +274,7 @@ ES_t GPIO_enuDeInit(GPIO_RegDef_t *PGPIOx)
  * @brief 		- Read specific pin in the GPIOx according to specified parameters in the Configuration Pin Structure [GPIO_PinConfig_t].
  * @param [in] 	- GPIOx which x can be (A..E depending on device used)
  * @param [in] 	- Copy_u16PinNumber Which Contain Pin Number [0....15]
- * @param [out] 	- *Copy_Pu16PinValue which get the value of specific pin in it
+ * @param [out] - *Copy_Pu16PinValue which get the value of specific pin in it
  * @retval 		- ErrorState Value Which can be [OK for get bit successfully ...NOK for errors appear]
  * Note			-Stm32f103C6 MCU has  GPIO A,B,C,D,E Modules
  * 				 But LQFP48 Package has only GPIO A,B,PART of C/D exported as external pins from MCU
@@ -345,7 +345,7 @@ ES_t GPIO_enuWriteToOutputPin(GPIO_RegDef_t *PGPIOx  , uint16_t Copy_u16PinNumbe
  * @Fn			- GPIO_ReadFromInputPort
  * @brief 		- Read GPIOx PORT Value
  * @param [in] 	- GPIOx which x can be (A..E depending on device used)
- * @param [out] 	- *Copy_Pu16PinValue which get the value from PORT
+ * @param [out] - *Copy_Pu16PinValue which get the value from PORT
  * @retval 		- ErrorState Value Which can be [OK for read port successfully ...NOK for errors appear]
  * Note			-Stm32f103C6 MCU has  GPIO A,B,C,D,E Modules
  * 				 But LQFP48 Package has only GPIO A,B,PART of C/D exported as external pins from MCU

@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  000207d0  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00004e9a  00000000  00000000  000207f9  2**0
+ 12 .debug_info   00004ea2  00000000  00000000  000207f9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 00000b64  00000000  00000000  00025693  2**0
+ 13 .debug_abbrev 00000b9e  00000000  00000000  0002569b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_loc    000012ba  00000000  00000000  000261f7  2**0
+ 14 .debug_loc    000012ba  00000000  00000000  00026239  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_aranges 000002a8  00000000  00000000  000274b8  2**3
+ 15 .debug_aranges 000002a8  00000000  00000000  000274f8  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_ranges 00000240  00000000  00000000  00027760  2**3
+ 16 .debug_ranges 00000240  00000000  00000000  000277a0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_macro  00000c91  00000000  00000000  000279a0  2**0
+ 17 .debug_macro  00000c91  00000000  00000000  000279e0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_line   00002778  00000000  00000000  00028631  2**0
+ 18 .debug_line   00002778  00000000  00000000  00028671  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .debug_str    00008e61  00000000  00000000  0002ada9  2**0
+ 19 .debug_str    00008e61  00000000  00000000  0002ade9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 20 .comment      0000007b  00000000  00000000  00033c0a  2**0
+ 20 .comment      0000007b  00000000  00000000  00033c4a  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00000978  00000000  00000000  00033c88  2**2
+ 21 .debug_frame  00000978  00000000  00000000  00033cc8  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -79,10 +79,10 @@ Disassembly of section .text:
  800016c:	08000df8 	.word	0x08000df8
 
 08000170 <DMA_enuConfigurationSetup>:
-
-static void DMA_SvidClearFlag (uint8_t Copy_u8ChannelNumber,uint8_t Copy_u8Flag);
-void ( *DMA_CallBackChannel1 )( void );
-
+ * @brief 		- This Function used to make a configuration setup entered by user from application layer
+ * @param [in] 	- PDMAHandle Which contain the configuration
+ * @retval 		- ErrorState which indicates that function works without errors
+ */
 ES_t DMA_enuConfigurationSetup (DMA_Handle_t *PDMAHandle)
 {
  8000170:	b480      	push	{r7}
@@ -975,7 +975,10 @@ ES_t DMA_enuConfigurationSetup (DMA_Handle_t *PDMAHandle)
  80007d4:	40020000 	.word	0x40020000
 
 080007d8 <DMA_enuEnable>:
-
+ * @brief 		- This Function Used to Enable DMA Channel
+ * @param [in] 	- Copy_u8ChannelNumber Which is the Channel Number
+ * @retval 		- ErrorState which indicates that function works without errors
+ */
 ES_t DMA_enuEnable  (uint8_t Copy_u8ChannelNumber)
 {
  80007d8:	b580      	push	{r7, lr}
@@ -1057,10 +1060,10 @@ ES_t DMA_enuEnable  (uint8_t Copy_u8ChannelNumber)
  8000854:	40020000 	.word	0x40020000
 
 08000858 <DMA_enuInterruptEnable>:
-	}
-
-	return Local_enuErrorState;
-}
+ * @param [in] 	- Copy_u8ChannelNumber Which is the Channel Number
+ * @param [in] 	- Copy_u8InterruptSource Which is Interrupt Source
+ * @retval 		- ErrorState which indicates that function works without errors
+ */
 ES_t DMA_enuInterruptEnable  (uint8_t Copy_u8ChannelNumber , uint8_t Copy_u8InterruptSource)
 {
  8000858:	b480      	push	{r7}
@@ -1129,6 +1132,10 @@ ES_t DMA_enuInterruptEnable  (uint8_t Copy_u8ChannelNumber , uint8_t Copy_u8Inte
  80008bc:	40020000 	.word	0x40020000
 
 080008c0 <DMA_enuSetAddress>:
+ * @param [in] 	- Copy_Pu32MemoryAddress Which is The Memory Address (Destination)
+ * @param [in] 	- Copy_u16NDT Which is Block Length
+ * @retval 		- ErrorState which indicates that function works without errors
+ */
 ES_t DMA_enuSetAddress (uint8_t Copy_u8ChannelNumber , uint32_t *Copy_Pu32PeriphralAddress , uint32_t *Copy_Pu32MemoryAddress,uint16_t Copy_u16NDT)
 {
  80008c0:	b480      	push	{r7}
@@ -1233,6 +1240,10 @@ ES_t DMA_enuSetAddress (uint8_t Copy_u8ChannelNumber , uint32_t *Copy_Pu32Periph
  8000968:	40020000 	.word	0x40020000
 
 0800096c <DMA_SvidClearFlag>:
+ * ==============================================================================================
+ * 								Helper Functions {Private}
+ * ==============================================================================================
+ */
 static void DMA_SvidClearFlag (uint8_t Copy_u8ChannelNumber,uint8_t Copy_u8Flag)
 {
  800096c:	b480      	push	{r7}
@@ -1270,11 +1281,11 @@ static void DMA_SvidClearFlag (uint8_t Copy_u8ChannelNumber,uint8_t Copy_u8Flag)
  80009a8:	40020000 	.word	0x40020000
 
 080009ac <DMA1_Channel1_IRQHandler>:
-void DMA_VidSetCallBackChannel1( void ( *Ptr ) ( void ) )
-{
-	DMA_CallBackChannel1 = Ptr ;
-}
-
+/*
+ * ==============================================================================================
+ * 								IRQHandler For DMA_Channel1
+ * ==============================================================================================
+ */
 void DMA1_Channel1_IRQHandler(void){
  80009ac:	b580      	push	{r7, lr}
  80009ae:	af00      	add	r7, sp, #0

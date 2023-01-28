@@ -6,10 +6,24 @@
 #include"MACROS.h"
 #include "STM32F103x8.h"
 #include "STM32F103xx_DMA_driver.h"
-
+/*
+ * ==============================================================================================
+ * 								Helper Functions {Private}
+ * ==============================================================================================
+ */
 static void DMA_SvidClearFlag (uint8_t Copy_u8ChannelNumber,uint8_t Copy_u8Flag);
+/*
+ * ==============================================================================================
+ * 								CallBack For Channel 1
+ * ==============================================================================================
+ */
 void ( *DMA_CallBackChannel1 )( void );
-
+/**================================================================
+ * @Fn			- DMA_enuConfigurationSetup
+ * @brief 		- This Function used to make a configuration setup entered by user from application layer
+ * @param [in] 	- PDMAHandle Which contain the configuration
+ * @retval 		- ErrorState which indicates that function works without errors
+ */
 ES_t DMA_enuConfigurationSetup (DMA_Handle_t *PDMAHandle)
 {
 	ES_t Local_enuErrorState = ES_NOK;
@@ -124,7 +138,12 @@ ES_t DMA_enuConfigurationSetup (DMA_Handle_t *PDMAHandle)
 	}
 	return Local_enuErrorState;
 }
-
+/**================================================================
+ * @Fn			- DMA_enuEnable
+ * @brief 		- This Function Used to Enable DMA Channel
+ * @param [in] 	- Copy_u8ChannelNumber Which is the Channel Number
+ * @retval 		- ErrorState which indicates that function works without errors
+ */
 ES_t DMA_enuEnable  (uint8_t Copy_u8ChannelNumber)
 {
 	ES_t Local_enuErrorState = ES_NOK;
@@ -146,6 +165,12 @@ ES_t DMA_enuEnable  (uint8_t Copy_u8ChannelNumber)
 
 	return Local_enuErrorState;
 }
+/**================================================================
+ * @Fn			- DMA_enuDisable
+ * @brief 		- This Function Used to Disable DMA Channel
+ * @param [in] 	- Copy_u8ChannelNumber Which is the Channel Number
+ * @retval 		- ErrorState which indicates that function works without errors
+ */
 ES_t DMA_enuDisable (uint8_t Copy_u8ChannelNumber)
 {
 	ES_t Local_enuErrorState = ES_NOK;
@@ -162,6 +187,13 @@ ES_t DMA_enuDisable (uint8_t Copy_u8ChannelNumber)
 
 	return Local_enuErrorState;
 }
+/**================================================================
+ * @Fn			- DMA_enuInterruptEnable
+ * @brief 		- This Function Used to Enable Interrupt Source on Interrupt Channel
+ * @param [in] 	- Copy_u8ChannelNumber Which is the Channel Number
+ * @param [in] 	- Copy_u8InterruptSource Which is Interrupt Source
+ * @retval 		- ErrorState which indicates that function works without errors
+ */
 ES_t DMA_enuInterruptEnable  (uint8_t Copy_u8ChannelNumber , uint8_t Copy_u8InterruptSource)
 {
 	ES_t Local_enuErrorState = ES_NOK;
@@ -178,6 +210,15 @@ ES_t DMA_enuInterruptEnable  (uint8_t Copy_u8ChannelNumber , uint8_t Copy_u8Inte
 
 	return Local_enuErrorState;
 }
+/**================================================================
+ * @Fn			- DMA_enuSetAddress
+ * @brief 		- This Function Used to Transfer Data Between Two Locations in Memory EX:[P32->M32]
+ * @param [in] 	- Copy_u8ChannelNumber Which is the Channel Number
+ * @param [in] 	- Copy_Pu32PeriphralAddress Which is The Peripheral Address (Source)
+ * @param [in] 	- Copy_Pu32MemoryAddress Which is The Memory Address (Destination)
+ * @param [in] 	- Copy_u16NDT Which is Block Length
+ * @retval 		- ErrorState which indicates that function works without errors
+ */
 ES_t DMA_enuSetAddress (uint8_t Copy_u8ChannelNumber , uint32_t *Copy_Pu32PeriphralAddress , uint32_t *Copy_Pu32MemoryAddress,uint16_t Copy_u16NDT)
 {
 	ES_t Local_enuErrorState = ES_NOK;
@@ -196,11 +237,24 @@ ES_t DMA_enuSetAddress (uint8_t Copy_u8ChannelNumber , uint32_t *Copy_Pu32Periph
 
 	return Local_enuErrorState;
 }
+/*
+ * ==============================================================================================
+ * 								Helper Functions {Private}
+ * ==============================================================================================
+ */
 static void DMA_SvidClearFlag (uint8_t Copy_u8ChannelNumber,uint8_t Copy_u8Flag)
 {
 	Copy_u8ChannelNumber = (Copy_u8ChannelNumber-1)*4;
 	SET_BIT(DMA->IFCR,(Copy_u8ChannelNumber+Copy_u8Flag));
 }
+/**================================================================
+ * @Fn			- DMA_enuSetAddress
+ * @brief 		- This Function Used to Transfer Data Between Two Locations in Memory EX:[P32->M32]
+ * @param [in] 	- Copy_u8ChannelNumber Which is the Channel Number
+ * @param [in] 	- Copy_u8Flag Which is The Flag you want to read
+ * @param [in] 	- Copy_u8Read Which is The Pointer to variable that u used to return flag value
+ * @retval 		- ErrorState which indicates that function works without errors
+ */
 ES_t DMA_enuReadFlag (uint8_t Copy_u8ChannelNumber,uint8_t Copy_u8Flag , uint8_t *Copy_u8Read)
 {
 	ES_t Local_enuErrorState = ES_NOK;
@@ -218,11 +272,20 @@ ES_t DMA_enuReadFlag (uint8_t Copy_u8ChannelNumber,uint8_t Copy_u8Flag , uint8_t
 
 	return Local_enuErrorState;
 }
+/*
+ * ==============================================================================================
+ * 								Used To Set user Function to be called in Handler
+ * ==============================================================================================
+ */
 void DMA_VidSetCallBackChannel1( void ( *Ptr ) ( void ) )
 {
 	DMA_CallBackChannel1 = Ptr ;
 }
-
+/*
+ * ==============================================================================================
+ * 								IRQHandler For DMA_Channel1
+ * ==============================================================================================
+ */
 void DMA1_Channel1_IRQHandler(void){
 	DMA_SvidClearFlag(1, DMA_GIF);
 	DMA_SvidClearFlag(1, DMA_TCIF);

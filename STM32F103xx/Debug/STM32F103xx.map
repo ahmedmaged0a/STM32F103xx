@@ -1176,23 +1176,23 @@ LOAD c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x00000000000001f7       0x1d c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
 OUTPUT(STM32F103xx.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000     0x4e9a
- .debug_info    0x0000000000000000      0xd73 STM32F103c8_Drivers/MCAL/src/STM32F103xx_DMA_driver.o
- .debug_info    0x0000000000000d73     0x136f STM32F103c8_Drivers/MCAL/src/STM32f103xx_EXTI_driver.o
- .debug_info    0x00000000000020e2      0xb65 STM32F103c8_Drivers/MCAL/src/STM32f103xx_NVIC_driver.o
- .debug_info    0x0000000000002c47      0xa86 STM32F103c8_Drivers/MCAL/src/STM32f103xx_RCC_driver.o
- .debug_info    0x00000000000036cd      0xc42 STM32F103c8_Drivers/MCAL/src/STM32f103xx_SysTick_driver.o
- .debug_info    0x000000000000430f      0xb69 Src/DMA_Test1.o
- .debug_info    0x0000000000004e78       0x22 Startup/startup_stm32f103c6tx.o
+.debug_info     0x0000000000000000     0x4ea2
+ .debug_info    0x0000000000000000      0xd7b STM32F103c8_Drivers/MCAL/src/STM32F103xx_DMA_driver.o
+ .debug_info    0x0000000000000d7b     0x136f STM32F103c8_Drivers/MCAL/src/STM32f103xx_EXTI_driver.o
+ .debug_info    0x00000000000020ea      0xb65 STM32F103c8_Drivers/MCAL/src/STM32f103xx_NVIC_driver.o
+ .debug_info    0x0000000000002c4f      0xa86 STM32F103c8_Drivers/MCAL/src/STM32f103xx_RCC_driver.o
+ .debug_info    0x00000000000036d5      0xc42 STM32F103c8_Drivers/MCAL/src/STM32f103xx_SysTick_driver.o
+ .debug_info    0x0000000000004317      0xb69 Src/DMA_Test1.o
+ .debug_info    0x0000000000004e80       0x22 Startup/startup_stm32f103c6tx.o
 
-.debug_abbrev   0x0000000000000000      0xb64
- .debug_abbrev  0x0000000000000000      0x230 STM32F103c8_Drivers/MCAL/src/STM32F103xx_DMA_driver.o
- .debug_abbrev  0x0000000000000230      0x214 STM32F103c8_Drivers/MCAL/src/STM32f103xx_EXTI_driver.o
- .debug_abbrev  0x0000000000000444      0x1bd STM32F103c8_Drivers/MCAL/src/STM32f103xx_NVIC_driver.o
- .debug_abbrev  0x0000000000000601      0x199 STM32F103c8_Drivers/MCAL/src/STM32f103xx_RCC_driver.o
- .debug_abbrev  0x000000000000079a      0x207 STM32F103c8_Drivers/MCAL/src/STM32f103xx_SysTick_driver.o
- .debug_abbrev  0x00000000000009a1      0x1b1 Src/DMA_Test1.o
- .debug_abbrev  0x0000000000000b52       0x12 Startup/startup_stm32f103c6tx.o
+.debug_abbrev   0x0000000000000000      0xb9e
+ .debug_abbrev  0x0000000000000000      0x26a STM32F103c8_Drivers/MCAL/src/STM32F103xx_DMA_driver.o
+ .debug_abbrev  0x000000000000026a      0x214 STM32F103c8_Drivers/MCAL/src/STM32f103xx_EXTI_driver.o
+ .debug_abbrev  0x000000000000047e      0x1bd STM32F103c8_Drivers/MCAL/src/STM32f103xx_NVIC_driver.o
+ .debug_abbrev  0x000000000000063b      0x199 STM32F103c8_Drivers/MCAL/src/STM32f103xx_RCC_driver.o
+ .debug_abbrev  0x00000000000007d4      0x207 STM32F103c8_Drivers/MCAL/src/STM32f103xx_SysTick_driver.o
+ .debug_abbrev  0x00000000000009db      0x1b1 Src/DMA_Test1.o
+ .debug_abbrev  0x0000000000000b8c       0x12 Startup/startup_stm32f103c6tx.o
 
 .debug_loc      0x0000000000000000     0x12ba
  .debug_loc     0x0000000000000000      0x300 STM32F103c8_Drivers/MCAL/src/STM32F103xx_DMA_driver.o
