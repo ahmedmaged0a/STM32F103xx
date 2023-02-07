@@ -16,7 +16,7 @@
  *
  ******************************************************************************
  */
-/*#include <STM32f103xx_RCC_driver.h>
+#include <STM32f103xx_RCC_driver.h>
 #include <STM32f103xx_GPIO_driver.h>
 #include <STM32f103xx_SysTick_driver.h>
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
@@ -53,4 +53,4 @@ int main(void)
 		_delay_ms(1000);
 	}
 
-}*/
+}

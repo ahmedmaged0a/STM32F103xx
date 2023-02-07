@@ -16,7 +16,7 @@
  *
  ******************************************************************************
  */
-/*#include <STM32f103xx_GPIO_driver.h>
+#include <STM32f103xx_GPIO_driver.h>
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
@@ -97,5 +97,5 @@ int main(void)
 		wait_ms(500);
 
 	}
-}*/
+}
 

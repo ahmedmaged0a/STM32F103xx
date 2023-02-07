@@ -8,6 +8,7 @@
 #define INCLUDE_STM32F103X6_H_
 
 #define __vo	volatile
+#define __weak  __attribute__((weak))
 //-----------------------------
 //Includes
 //-----------------------------
@@ -106,7 +107,8 @@ typedef struct
 #define GPIOC_BASE			(APB2_PREPHERALS_BASE+0x1000U)
 #define GPIOD_BASE			(APB2_PREPHERALS_BASE+0x1400U)
 #define GPIOE_BASE			(APB2_PREPHERALS_BASE+0x1800U)
-
+//-------SPI-------
+#define SPI1_BASE 			(APB2_PREPHERALS_BASE+0x3000U)
 //-----------------------------
 //Base addresses for APB1 Peripherals
 //-----------------------------
@@ -183,7 +185,7 @@ typedef struct
 	__vo uint32_t  CNDTRx;									    // Address offset = 0x04
 	__vo uint32_t  CPARx;									    // Address offset = 0x08
 	__vo uint32_t  CMARx;									    // Address offset = 0x0C
-	__vo uint32_t  Reserved;									    // Address offset = 0x10
+	__vo uint32_t  Reserved;								    // Address offset = 0x10
 }DMA1_Channel;
 typedef struct
 {
@@ -191,6 +193,19 @@ typedef struct
 	__vo uint32_t  IFCR;									    // Address offset = 0x0C
 	DMA1_Channel  CHANNEL[7];									// Address offset = 0x10
 }DMA1_RegDef_t;
+
+typedef struct
+{
+	__vo uint32_t SPI_CR1;                                             // Address offset = 0x00
+	__vo uint32_t SPI_CR2;                                             // Address offset = 0x04
+	__vo uint32_t SPI_SR;                                              // Address offset = 0x08
+	__vo uint32_t SPI_DR;                                              // Address offset = 0x0C
+	__vo uint32_t SPI_CRCPR;                                           // Address offset = 0x10
+	__vo uint32_t SPI_RXCRCR;                                          // Address offset = 0x14
+	__vo uint32_t SPI_TXCRCR;                                          // Address offset = 0x18
+	__vo uint32_t SPI_I2SCFGR;                                         // Address offset = 0x1C
+	__vo uint32_t SPI_I2SPR;                                           // Address offset = 0x20
+}SPI_RegDef_t;
 //============================================================================================
 
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -211,6 +226,8 @@ typedef struct
 #define AFIO				((AFIO_RegDef_t *)AFIO_BASE)
 //-------AFIO-------
 #define DMA				     ((DMA1_RegDef_t *)DMA1_BASE)
+//-------SPI-------
+#define SPI1					((SPI_RegDef_t *)SPI1_BASE)
 //============================================================================================
 
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -229,6 +246,9 @@ typedef struct
 
 //------DMA---------
 #define DMA_PERI_CLOCK_ENABLE()			(RCC->AHBENR |= (1<<0))
+
+//------SPI---------
+#define SPI1_PERI_CLOCK_ENABLE()		(RCC->APB2ENR |= (1<<12))
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 //macros to reset GPIOx Peripherals:
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -256,6 +276,9 @@ typedef struct
 
 //------DMA---------
 #define DMA_PERI_CLOCK_DISABLE()		(RCC->AHBENR &=~ (1<<0))
+
+//------SPI---------
+#define SPI1_PERI_CLOCK_DISABLE()		(RCC->APB2ENR &=~ (1<<12))
 
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 //Error States:
@@ -319,4 +342,39 @@ typedef enum
 #define DMA1_ENABLE  0
 #define DMA1_DISABLE 1
 
+/******************************************************************************************
+ *Bit position definitions of SPI peripheral
+ ******************************************************************************************/
+#define SPI_CR1_CPHA     				 0
+#define SPI_CR1_CPOL      				 1
+#define SPI_CR1_MSTR     				 2
+#define SPI_CR1_BR   					 3
+#define SPI_CR1_SPE     				 6
+#define SPI_CR1_LSBFIRST   			 	 7
+#define SPI_CR1_SSI     				 8
+#define SPI_CR1_SSM      				 9
+#define SPI_CR1_RXONLY      		 	10
+#define SPI_CR1_DFF     			 	11
+#define SPI_CR1_CRCNEXT   			 	12
+#define SPI_CR1_CRCEN   			 	13
+#define SPI_CR1_BIDIOE     			 	14
+#define SPI_CR1_BIDIMODE      			15
+
+#define SPI_CR2_RXDMAEN		 			0
+#define SPI_CR2_TXDMAEN				 	1
+#define SPI_CR2_SSOE				 	2
+#define SPI_CR2_FRF						4
+#define SPI_CR2_ERRIE					5
+#define SPI_CR2_RXNEIE				 	6
+#define SPI_CR2_TXEIE					7
+
+#define SPI_SR_RXNE						0
+#define SPI_SR_TXE				 		1
+#define SPI_SR_CHSIDE				 	2
+#define SPI_SR_UDR					 	3
+#define SPI_SR_CRCERR				 	4
+#define SPI_SR_MODF					 	5
+#define SPI_SR_OVR					 	6
+#define SPI_SR_BSY					 	7
+#define SPI_SR_FRE					 	8
 #endif /* INCLUDE_STM32F103X6_H_ */

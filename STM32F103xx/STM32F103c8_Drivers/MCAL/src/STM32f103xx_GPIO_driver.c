@@ -6,6 +6,7 @@
 
 #include "../../../STM32F103c8_Drivers/MCAL/inc/STM32f103xx_GPIO_driver.h"
 
+static ES_t    GPIO_enuPeriClockControl(GPIO_RegDef_t *PGPIOx , uint8_t Copy_u8Clockstatus);
 /**================================================================
  * @Fn			- Get_CRLH_Position
  * @brief 		- Helper function used to get the position of start bit in register
@@ -81,7 +82,7 @@ static uint8_t Get_CRLH_Position(uint16_t Pin_Number)
  * 				 But LQFP48 Package has only GPIO A,B,PART of C/D exported as external pins from MCU
  */
 
-ES_t GPIO_enuPeriClockControl(GPIO_RegDef_t *PGPIOx , uint8_t Copy_u8Clockstatus)
+static ES_t GPIO_enuPeriClockControl(GPIO_RegDef_t *PGPIOx , uint8_t Copy_u8Clockstatus)
 {
 	ES_t Local_enuErrorState = ES_NOK;
 	if(PGPIOx != NULL)
@@ -170,7 +171,8 @@ ES_t GPIO_enuInit(GPIO_Handle_t *PGPIOHandle)
 	uint16_t Local_u8PinNumber = PGPIOHandle->GPIO_PinConfig_t.GPIO_PinNumber;
 	uint8_t Local_u8PinMode = PGPIOHandle->GPIO_PinConfig_t.GPIO_PinMode;
 	__vo uint32_t *Local_Pu32ConfigReg = NULL;
-
+	//Enable Peripheral Clock
+	GPIO_enuPeriClockControl(PGPIOHandle->PGPIOx, ENABLE);
 	if(PGPIOHandle != NULL)
 	{
 		//port configuration register low (GPIOx_CRL)  0>>7

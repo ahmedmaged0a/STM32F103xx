@@ -1,0 +1,14 @@
+STM32F103xx_SPI_driver.c:30:6:SPI_Init	24	static
+STM32F103xx_SPI_driver.c:84:6:SPI_SendData	32	static
+STM32F103xx_SPI_driver.c:132:6:SPI_ReceiveData	32	static
+STM32F103xx_SPI_driver.c:180:6:SPI_PeripheralControl	24	static
+STM32F103xx_SPI_driver.c:215:6:SPI_SSIControl	24	static
+STM32F103xx_SPI_driver.c:250:9:SPI_AsySendData	32	static
+STM32F103xx_SPI_driver.c:280:9:SPI_AsyReceiveData	32	static
+STM32F103xx_SPI_driver.c:310:6:SPI_IRQHandling	24	static
+STM32F103xx_SPI_driver.c:351:13:SPI_TXE_Interrupt_Handle	16	static
+STM32F103xx_SPI_driver.c:392:13:SPI_RXNE_Interrupt_Handle	16	static
+STM32F103xx_SPI_driver.c:433:13:SPI_OVR_Interrupt_Handle	24	static
+STM32F103xx_SPI_driver.c:459:6:SPI_CloseTransmission	16	static
+STM32F103xx_SPI_driver.c:481:6:SPI_CloseReceive	16	static
+STM32F103xx_SPI_driver.c:504:13:SPI_CallBackFunction	16	static

@@ -120,7 +120,7 @@ typedef struct
 * ==============================================================================================
 */
 
-ES_t    GPIO_enuPeriClockControl(GPIO_RegDef_t *PGPIOx , uint8_t Copy_u8Clockstatus);
+
 
 ES_t    GPIO_enuInit(GPIO_Handle_t *PGPIOHandle);
 

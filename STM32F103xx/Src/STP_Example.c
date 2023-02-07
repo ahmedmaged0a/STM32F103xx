@@ -4,7 +4,7 @@
  * @author         : Ahmed Maged
  * @brief          : Serial to parallel test
  *******************************************************************************/
-/*#include "STP_74HC595.h"
+#include "STP_74HC595.h"
 #include "STM32f103xx_SysTick_driver.h"
 int main(void)
 {
@@ -35,4 +35,4 @@ int main(void)
 	}
 return 0;
 }
-*/
+

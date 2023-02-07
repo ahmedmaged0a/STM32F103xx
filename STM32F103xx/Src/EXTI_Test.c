@@ -16,7 +16,7 @@
  *
  ******************************************************************************
  */
-/*#include <STM32f103xx_RCC_driver.h>
+#include <STM32f103xx_RCC_driver.h>
 #include <STM32f103xx_GPIO_driver.h>
 #include <STM32f103xx_EXTI_driver.h>
 #include <STM32f103xx_NVIC_driver.h>
@@ -76,4 +76,4 @@ void Toggle(void)
 {
 	GPIO_enuToggleOutputPin(GPIOA, GPIO_PIN_1);
 }
-*/
+

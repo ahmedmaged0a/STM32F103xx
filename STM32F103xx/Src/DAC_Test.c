@@ -16,7 +16,7 @@
  *
  ******************************************************************************
  */
-/*
+
 #include <STM32f103xx_RCC_driver.h>
 #include <STM32f103xx_GPIO_driver.h>
 #include <STM32f103xx_SysTick_driver.h>
@@ -101,4 +101,4 @@ int main(void)
 	while(1);
 
 	return 0 ;
-}*/
+}
